@@ -330,9 +330,7 @@ public class UserRestController {
 	      //인증번호 6자리 생성
 	      try {
 	    	  
-	    	  System.out.println("인증버노");
-	    	  
-	          String[] array = new String[6];
+	         String[] array = new String[6];
 	         String key = new String();
 	         Random rd = new Random(); //랜덤 객체 생성
 	         
@@ -359,7 +357,6 @@ public class UserRestController {
 	       } catch (Exception e) {
 	         //fail(e.toString());
 	       }
-	      System.out.println("인증버노2222");
 	       return params;
 	     }
 	
