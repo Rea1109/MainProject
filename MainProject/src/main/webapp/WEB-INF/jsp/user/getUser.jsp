@@ -475,7 +475,7 @@
 									</div>
 									<div class="modal-body">
 										<!-- 모달내용 태그 -->
-											<form class="user">
+											<form class="user" name="abc">
 						                          <div class="form-group" align="center">
 						                             <div class="custom-control custom-checkbox small">
 						                                <span class="radio">
@@ -1767,7 +1767,7 @@
 	//회원가입 버튼 함수
 	function fncAddUser_() {
 		swal("게정연동에 성공했습니다! 로그인 후 이용해주세요!")
-		$("form").attr("method" , "POST").attr("action" , "/user/addUser").submit();
+		$("form[name=abc]").attr("method" , "POST").attr("action" , "/user/addUser").submit();
 	}
 	
 

@@ -520,7 +520,6 @@
 	function fncAuth(){					
 		
 		var phone = $("#phone").val()
-		//alert("입력한 연락처 : "+phone);
 		
 		$.ajax({
 				url : "/user/json/sms/"+phone ,

@@ -313,50 +313,54 @@ public class UserRestController {
 		}
 	
 	// Cool SMS API_key 및 API_secret Number
-	String api_key = "NCS3PSWYVLVN1LAA";
-	String api_secret = "S1QJK5JKOTOWKIT2T6QFIDOPXNCRBPY7";
-	
-	Message message = new Message(api_key, api_secret);
-	SenderID senderID;
-	JSONObject result;
-	JSONArray result_array;
-	
-	HashMap<String, String> params = new HashMap<String, String>();
-	
-	// sms 인증번호 생성
-	@GetMapping("json/sms/{phone}")
-	public HashMap sms( @PathVariable String phone ) throws Exception{
-	
-		//인증번호 6자리 생성
-		try {
-	    	String[] array = new String[6];
-			String key = new String();
-			Random rd = new Random(); //랜덤 객체 생성
-			
-			for(int i=0; i<array.length; i++) {
-	            array[i] = Integer.toString(rd.nextInt(10));
-	            key += array[i];
-	        }
-	    
-		// 문자보내기(테스트시 발신, 수신 둘다 내 번호로 하기)
-		params.put("to", phone); // 수신번호
-		params.put("from", "01039239995"); // 발신번호
-		params.put("type", "SMS");
-		params.put("text", "[사!교육 본인확인] 본인인증 확인번호 ["+key+"]를 입력하세요"); // 문자전송
-		params.put("mode", "test");
-		params.put("key", key);
-		result = message.send(params);
+	   String api_key = "NCSFWF5S8G4OLGCX";
+	   String api_secret = "QEKSHYXKMLVLEJRVQO8GPCYGZXZNVIY9";
+	   
+	   Message message = new Message(api_key, api_secret);
+	   SenderID senderID;
+	   JSONObject result;
+	   JSONArray result_array;
+	   
+	   HashMap<String, String> params = new HashMap<String, String>();
+	   
+	   // sms 인증번호 생성
+	   @GetMapping("json/sms/{phone}")
+	   public HashMap sms( @PathVariable String phone ) throws Exception{
+	   
+	      //인증번호 6자리 생성
 	      try {
-	        result = message.sent(params);
-	      } catch (Exception e) {
-	        result = (JSONObject) JSONValue.parse(e.getMessage());
-	      }
-	      // cancel
-	      params.put("mid", "MIDTEST");
-	    } catch (Exception e) {
-	      //fail(e.toString());
-	    }
-	    return params;
-	  }
+	    	  
+	    	  System.out.println("인증버노");
+	    	  
+	          String[] array = new String[6];
+	         String key = new String();
+	         Random rd = new Random(); //랜덤 객체 생성
+	         
+	         for(int i=0; i<array.length; i++) {
+	               array[i] = Integer.toString(rd.nextInt(10));
+	               key += array[i];
+	           }
+	       
+	      // 문자보내기(테스트시 발신, 수신 둘다 내 번호로 하기)
+	      params.put("to", phone); // 수신번호
+	      params.put("from", "01076358573"); // 발신번호
+	      params.put("type", "SMS");
+	      params.put("text", "[사!교육 본인확인] 본인인증 확인번호 ["+key+"]를 입력하세요"); // 문자전송
+	      params.put("mode", "test");
+	      params.put("key", key);
+	      result = message.send(params);
+	         try {
+	           result = message.sent(params);
+	         } catch (Exception e) {
+	           result = (JSONObject) JSONValue.parse(e.getMessage());
+	         }
+	         // cancel
+	         params.put("mid", "MIDTEST");
+	       } catch (Exception e) {
+	         //fail(e.toString());
+	       }
+	      System.out.println("인증버노2222");
+	       return params;
+	     }
 	
 }
