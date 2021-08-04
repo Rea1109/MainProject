@@ -62,7 +62,8 @@
     </div>
 </div>
 
-<!-- 신고 모달 팝업 -->     
+<!-- 신고 모달 팝업 -->  
+			<c:if test="${user.role != 'admin'}">   
 		    <div class="modal fade" id="complainCmd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 						  <div class="modal-dialog" role="document">
 						    <div class="modal-content">
@@ -99,25 +100,7 @@
 						    </div>
 						  </div>
 						</div>
-				
-		    <button class="btn btn-primary" id="complainButton" data-toggle="modal" data-target="#complainBrd">신고 취소</button>
-		    <div class="modal fade" id="complainBrd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-						  <div class="modal-dialog" role="document">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <h4 class="modal-title" id="myModalLabel">이미 신고 한 게시글 입니다.</h4>
-						      </div>
-						      <div class="modal-body" align="center">
-						      <!-- 모달 내용 -->
-									신고를 취하 하시겠습니까?
-						      </div>
-						      <div class="modal-footer">
-						        <button type="button" id="deleteComplain" class="btn btn-primary">신고 취소 하기</button>
-						        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-						      </div>
-						    </div>
-						  </div>
-						</div>
+			</c:if>
 			
 	
 <script>
@@ -165,7 +148,9 @@ function commentList(){
                 a += '<a id="upbu" onclick="commentDelete('+value.COMMENT_NO+');"> 삭제 </a>';
                 } 
                 if (sessionId != value.COMMENT_WRITER){
+                a += '<c:if test="${user.role != 'admin'}">'
                 a += '<a id="upbu" data-toggle="modal" href="#complainCmd" onclick="getNo('+value.COMMENT_NO+')")> 신고 </a>';
+                a += '</c:if>'
                 
                 }
         		a += '</div>'
