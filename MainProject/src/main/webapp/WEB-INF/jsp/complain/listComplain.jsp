@@ -176,7 +176,6 @@
             <th width=5%>신고 사유</th>
             <th width=20%>신고일자</th>
             <th width=10%>신고 처리</th>
-            <th width=10%>블러 처리</th>
            </tr>
         </thead>
 		<tbody>
@@ -221,10 +220,6 @@
 			  <a onclick="updateComplainy(${complain.complainNo})">수락</a>
 			  &nbsp;&nbsp; / &nbsp;
 			  <a onclick="updateComplainn(${complain.complainNo})">반려</a>
-			  </td>
-			  
-			  <td width=5% id="listtable" align="left">
-			  <a onclick="updateBoardState(${complain.board.boardNo})">블러 처리하기</a>
 			  </td>
 			  
 			</tr>
